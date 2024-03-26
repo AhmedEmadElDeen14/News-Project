@@ -15,6 +15,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool isSearch = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,20 +27,99 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         drawer: Drawer(),
-        appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.white),
-          backgroundColor: Colors.green,
-          centerTitle: true,
-          shape: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent),
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20))),
-          title: Text(
-            "News",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-        ),
+        appBar: selectedCategory != null
+            ? isSearch
+                ? AppBar(
+                    iconTheme: IconThemeData(color: Colors.white),
+                    backgroundColor: Colors.green,
+                    centerTitle: true,
+                    shape: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.transparent),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20),
+                      ),
+                    ),
+                    leading: SizedBox(),
+                    title: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Search Article",
+                          hintStyle: TextStyle(
+                              color: Color.fromRGBO(57, 165, 82, 200),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400),
+                          prefixIcon: InkWell(
+                            onTap: () {
+                              isSearch = false;
+                              setState(() {});
+                            },
+                            child: Icon(
+                              Icons.close,
+                              color: Color(0xff39A552),
+                            ),
+                          ),
+                          suffixIcon: InkWell(
+                            child: Icon(
+                              Icons.search,
+                              color: Color(0xff39A552),
+                            ),
+                          ),
+                          border:
+                              UnderlineInputBorder(borderSide: BorderSide.none),
+                        ),
+                      ),
+                    ),
+                  )
+                : AppBar(
+                    iconTheme: IconThemeData(color: Colors.white),
+                    backgroundColor: Colors.green,
+                    centerTitle: true,
+                    shape: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20))),
+                    title: Text(
+                      "News",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                    actions: [
+                      InkWell(
+                        onTap: () {
+                          isSearch = true;
+                          setState(() {});
+                        },
+                        child: Container(
+                          child: Icon(
+                            Icons.search,
+                            size: 25,
+                          ),
+                          padding: EdgeInsets.all(15),
+                        ),
+                      )
+                    ],
+                  )
+            : AppBar(
+                iconTheme: IconThemeData(color: Colors.white),
+                backgroundColor: Colors.green,
+                centerTitle: true,
+                shape: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.transparent),
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20))),
+                title: Text(
+                  "News",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              ),
         body: selectedCategory == null
             ? CategoryTab(onClick: onCategoryClicked)
             : DataTab(
