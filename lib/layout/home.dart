@@ -17,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isSearch = false;
+  var searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(25),
                       ),
                       child: TextField(
+                        controller: searchController,
                         decoration: InputDecoration(
                           hintText: "Search Article",
                           hintStyle: TextStyle(
@@ -136,4 +138,14 @@ class _HomeScreenState extends State<HomeScreen> {
     selectedCategory = category;
     setState(() {});
   }
+
+  late String searchText;
+
+  search(searchController){
+
+    searchText = searchController;
+
+
+  }
+
 }

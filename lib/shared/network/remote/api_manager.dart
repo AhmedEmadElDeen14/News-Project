@@ -26,4 +26,5 @@ class ApiManager {
     var json = jsonDecode(resposne.body);
     return NewsResponse.fromJson(json);
   }
+
 }

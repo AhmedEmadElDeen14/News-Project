@@ -1,4 +1,6 @@
 class NewsResponse {
+
+
   NewsResponse({
       this.status, 
       this.totalResults, 

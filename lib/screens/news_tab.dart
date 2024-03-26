@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_c10_str/models/source_reposne.dart';
+import 'package:news_c10_str/screens/article_details.dart';
 import 'package:news_c10_str/screens/news_item.dart';
 import 'package:news_c10_str/screens/source_item.dart';
 import 'package:news_c10_str/shared/network/remote/api_manager.dart';
@@ -55,19 +56,33 @@ class _NewsTabState extends State<NewsTab> {
             }
 
             var articlesList = snapshot.data?.articles ?? [];
+
             if (articlesList.isEmpty) {
-              return Center(child: Text("No SOurces"));
+              return Center(child: Text("No Sources"));
             }
             return Expanded(
               child: ListView.separated(
-
                 separatorBuilder: (context, index) => SizedBox(
                   height: 12,
                 ),
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: NewsItem(article: articlesList[index]),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => ArticleDetails(
+                              article: articlesList[index],
+                            ),
+                          ),
+                        );
+
+                      },
+                      child: NewsItem(
+                        article: articlesList[index],
+                      ),
+                    ),
                   );
                 },
                 itemCount: articlesList.length,

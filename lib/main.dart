@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_c10_str/layout/home.dart';
+import 'package:news_c10_str/screens/article_details.dart';
 import 'package:news_c10_str/screens/splash_screen.dart';
 
 void main() {
