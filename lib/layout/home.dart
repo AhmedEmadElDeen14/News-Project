@@ -3,6 +3,7 @@ import 'package:news_c10_str/models/category_model.dart';
 import 'package:news_c10_str/screens/category_tab.dart';
 import 'package:news_c10_str/screens/data_tab.dart';
 import 'package:news_c10_str/screens/news_tab.dart';
+import 'package:news_c10_str/screens/side_menu.dart';
 import 'package:news_c10_str/shared/network/remote/api_manager.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
               DecorationImage(image: AssetImage("assets/images/pattern.png"))),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        drawer: Drawer(),
+        drawer: SideMenu(),
         appBar: selectedCategory != null
             ? isSearch
                 ? AppBar(
