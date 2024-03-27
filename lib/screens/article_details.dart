@@ -13,6 +13,16 @@ class ArticleDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final Uri url = Uri.parse(article.url.toString());
 
+    DateTime publishedDate = DateTime.parse(article.publishedAt??"");
+    Duration timeDifference = DateTime.now().difference(publishedDate);
+
+    String formattedTime;
+
+    if (timeDifference.inHours < 24) {
+      formattedTime = "${timeDifference.inHours} hour${timeDifference.inHours > 1 ? 's' : ''} ago";
+    } else {
+      formattedTime = publishedDate.toString().split(' ').first;
+    }
 
     return Container(
       decoration: const BoxDecoration(
@@ -78,7 +88,7 @@ class ArticleDetails extends StatelessWidget {
               Container(
                 alignment: Alignment.topRight,
                 child: Text(
-                  article.publishedAt ?? "",
+                  formattedTime,
                   style: const TextStyle(
                     fontWeight: FontWeight.w400,
                     color: Color(0xff79828B),
