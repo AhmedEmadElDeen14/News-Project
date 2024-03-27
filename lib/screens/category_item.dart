@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_c10_str/models/category_model.dart';
 
@@ -14,18 +13,18 @@ class CategoryItem extends StatelessWidget {
       decoration: BoxDecoration(
           color: model.color,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(28),
-              topRight: Radius.circular(28),
-              bottomLeft: index.isOdd ? Radius.circular(28) : Radius.zero,
-              bottomRight: index.isEven ? Radius.circular(28) : Radius.zero)),
+              topLeft: const Radius.circular(28),
+              topRight: const Radius.circular(28),
+              bottomLeft: index.isOdd ? const Radius.circular(28) : Radius.zero,
+              bottomRight: index.isEven ? const Radius.circular(28) : Radius.zero)),
       child: Column(
         children: [
           Expanded(child: Image.asset(model.image)),
           Container(
-            margin: EdgeInsets.only(bottom: 18),
+            margin: const EdgeInsets.only(bottom: 18),
             child: Text(
               model.name,
-              style: TextStyle(color: Colors.white, fontSize: 22),
+              style: const TextStyle(color: Colors.white, fontSize: 22),
             ),
           ),
         ],

@@ -15,12 +15,12 @@ class SideMenu extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            color: Color(0xff39A552),
+            color: const Color(0xff39A552),
             height: MediaQuery
                 .of(context)
                 .size
                 .height * .18,
-            child: Center(
+            child: const Center(
               child: Text("News App!", style: TextStyle(
                   color: Colors.white,
                   fontSize: 25,
@@ -29,7 +29,7 @@ class SideMenu extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.symmetric(vertical: 20),
+            margin: const EdgeInsets.symmetric(vertical: 20),
             child: Column(
               children: [
                 InkWell(
@@ -38,20 +38,20 @@ class SideMenu extends StatelessWidget {
                         HomeScreen.routeName, (route) => false);
                   },
                   child: Container(
-                    margin: EdgeInsets.symmetric(
+                    margin: const EdgeInsets.symmetric(
                         vertical: 5,
                         horizontal: 15
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Icon(Icons.view_list_sharp),
-                        SizedBox(
+                        const Icon(Icons.view_list_sharp),
+                        const SizedBox(
                           width: 10,
                         ),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: Text("Categories", style: TextStyle(
+                          child: const Text("Categories", style: TextStyle(
                               color: Colors.black,
                               fontSize: 24,
                               fontWeight: FontWeight.w700
@@ -63,20 +63,20 @@ class SideMenu extends StatelessWidget {
                 ),
                 InkWell(
                   child: Container(
-                    margin: EdgeInsets.symmetric(
+                    margin: const EdgeInsets.symmetric(
                         vertical: 5,
                         horizontal: 15
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Icon(Icons.settings),
-                        SizedBox(
+                        const Icon(Icons.settings),
+                        const SizedBox(
                           width: 10,
                         ),
                         Container(
                           alignment: Alignment.topLeft,
-                          child: Text("Settings", style: TextStyle(
+                          child: const Text("Settings", style: TextStyle(
                               color: Colors.black,
                               fontSize: 24,
                               fontWeight: FontWeight.w700

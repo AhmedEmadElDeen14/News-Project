@@ -22,8 +22,8 @@ class NewsItem extends StatelessWidget {
               height: 250,
               fit: BoxFit.fill,
               placeholder: (context, url) =>
-                  Center(child: CircularProgressIndicator()),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+                  const Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
           Padding(
@@ -33,17 +33,17 @@ class NewsItem extends StatelessWidget {
               children: [
                 Text(
                   article.source?.name ?? "",
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.w300, color: Colors.grey),
                 ),
                 Text(
                   article.title ?? "",
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.w700, color: Colors.black),
                 ),
                 Text(
                   article.description ?? "",
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.w300, color: Colors.black),
                 ),
               ],

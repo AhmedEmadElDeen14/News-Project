@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.of(context)
           .pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
     });
@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         image: DecorationImage(
           image: AssetImage("assets/images/pattern.png"),
@@ -35,21 +35,21 @@ class _SplashScreenState extends State<SplashScreen> {
         backgroundColor: Colors.transparent,
         body: Stack(
           children: [
-            Center(
+            const Center(
               child: Image(
                 image: AssetImage("assets/images/logo.png"),
               ),
             ),
             Container(
               alignment: Alignment.bottomCenter,
-              child: Image(
+              child: const Image(
                 image: AssetImage("assets/images/route blue.png"),
               ),
             ),
             Container(
               alignment: Alignment.bottomCenter,
-              margin: EdgeInsets.all(18),
-              child: Text(
+              margin: const EdgeInsets.all(18),
+              child: const Text(
                 "supervised by Mohamed Nabil",
                 style: TextStyle(
                     fontSize: 16,

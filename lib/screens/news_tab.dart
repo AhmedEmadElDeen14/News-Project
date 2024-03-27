@@ -7,10 +7,9 @@ import 'package:news_c10_str/shared/network/remote/api_manager.dart';
 
 class NewsTab extends StatefulWidget {
   List<Sources> sources;
-  Function? onSearch;
   String? searchText;
 
-  NewsTab({super.key, required this.sources, this.onSearch, this.searchText});
+  NewsTab({super.key, required this.sources, this.searchText});
 
   @override
   State<NewsTab> createState() => _NewsTabState();
@@ -49,23 +48,23 @@ class _NewsTabState extends State<NewsTab> {
                     widget.sources[selectedIndex].id ?? ""),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                         child: CircularProgressIndicator(
                       color: Colors.green,
                     ));
                   }
                   if (snapshot.hasError) {
-                    return Center(child: Text("Something went wrong"));
+                    return const Center(child: Text("Something went wrong"));
                   }
 
                   var articlesList = snapshot.data?.articles ?? [];
 
                   if (articlesList.isEmpty) {
-                    return Center(child: Text("No Sources"));
+                    return const Center(child: Text("No Sources"));
                   }
                   return Expanded(
                     child: ListView.separated(
-                      separatorBuilder: (context, index) => SizedBox(
+                      separatorBuilder: (context, index) => const SizedBox(
                         height: 12,
                       ),
                       itemBuilder: (context, index) {
@@ -98,13 +97,13 @@ class _NewsTabState extends State<NewsTab> {
                     widget.searchText ?? ""),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                         child: CircularProgressIndicator(
                       color: Colors.green,
                     ));
                   }
                   if (snapshot.hasError) {
-                    return Center(child: Text("Something went wrong"));
+                    return const Center(child: Text("Something went wrong"));
                   }
 
                   var articlesList = snapshot.data?.articles ?? [];
@@ -114,7 +113,7 @@ class _NewsTabState extends State<NewsTab> {
                         child: Text(
                       "No Articles about \"${widget.searchText}\"\n in ${widget.sources[selectedIndex].name}",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                         color: Colors.red,
@@ -123,7 +122,7 @@ class _NewsTabState extends State<NewsTab> {
                   }
                   return Expanded(
                     child: ListView.separated(
-                      separatorBuilder: (context, index) => SizedBox(
+                      separatorBuilder: (context, index) => const SizedBox(
                         height: 12,
                       ),
                       itemBuilder: (context, index) {

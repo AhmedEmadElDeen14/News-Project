@@ -4,10 +4,9 @@ import 'package:news_c10_str/shared/network/remote/api_manager.dart';
 
 class DataTab extends StatefulWidget {
   String categoryId;
-  Function? onSearch;
   String? searchText;
 
-  DataTab({required this.categoryId,this.onSearch,this.searchText, super.key});
+  DataTab({required this.categoryId,this.searchText, super.key});
 
   @override
   State<DataTab> createState() => _DataTabState();
@@ -24,21 +23,21 @@ class _DataTabState extends State<DataTab> {
       future: ApiManager.getSources(widget.categoryId),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
         if (snapshot.hasError) {
-          return Center(child: Text("Something went wrong"));
+          return const Center(child: Text("Something went wrong"));
         }
 
         var sourcesList = snapshot.data?.sources ?? [];
         if (sourcesList.isEmpty) {
-          return Center(child: Text("No SOurces"));
+          return const Center(child: Text("No Sources"));
         }
-        return widget.onSearch == null?
+        return widget.searchText == null||widget.searchText==""?
           NewsTab(
           sources: sourcesList,
         ):
-        NewsTab(sources: sourcesList, onSearch: widget.onSearch,searchText: widget.searchText,);
+        NewsTab(sources: sourcesList,searchText: widget.searchText,);
       },
     );
   }

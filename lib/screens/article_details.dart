@@ -11,42 +11,36 @@ class ArticleDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Uri _url = Uri.parse(article.url.toString());
+    final Uri url = Uri.parse(article.url.toString());
 
-    Future<void> _launchUrl() async {
-      launchUrl(_url);
-      if (!await launchUrl(_url)) {
-        throw Exception('Could not launch $_url');
-      }
-    }
 
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: Colors.white,
           image:
               DecorationImage(image: AssetImage("assets/images/pattern.png"))),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        drawer: SideMenu(),
+        drawer: const SideMenu(),
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           backgroundColor: Colors.green,
           centerTitle: true,
-          shape: OutlineInputBorder(
+          shape: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.transparent),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
             ),
           ),
-          leading: SizedBox(),
-          title: Text(
+          leading: const SizedBox(),
+          title: const Text(
             "News Details",
             style: TextStyle(color: Colors.white),
           ),
         ),
         body: Container(
-          padding: EdgeInsets.all(25),
+          padding: const EdgeInsets.all(25),
           child: ListView(
             children: [
               ClipRRect(
@@ -56,15 +50,15 @@ class ArticleDetails extends StatelessWidget {
                   height: 250,
                   fit: BoxFit.fill,
                   placeholder: (context, url) =>
-                      Center(child: CircularProgressIndicator()),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                      const Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
               Container(
                 alignment: Alignment.topLeft,
                 child: Text(
                   article.source!.name ?? "",
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.w400, color: Color(0xff79828B)),
                 ),
               ),
@@ -72,46 +66,46 @@ class ArticleDetails extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: Text(
                   article.title ?? "",
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.w400,
                       color: Colors.black,
                       fontSize: 18),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
                 alignment: Alignment.topRight,
                 child: Text(
                   article.publishedAt ?? "",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w400,
                     color: Color(0xff79828B),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
                 alignment: Alignment.topRight,
                 child: Text(
                   article.content ?? "",
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.w400,
                       color: Color(0xff42505C),
                       fontSize: 18),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               InkWell(
                 onTap: () {
-                  launchUrl(_url);
+                  launchUrl(url);
                 },
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

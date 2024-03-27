@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:news_c10_str/models/category_model.dart';
 import 'package:news_c10_str/screens/category_tab.dart';
 import 'package:news_c10_str/screens/data_tab.dart';
-import 'package:news_c10_str/screens/news_tab.dart';
 import 'package:news_c10_str/screens/side_menu.dart';
-import 'package:news_c10_str/shared/network/remote/api_manager.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "Home";
 
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -23,20 +21,20 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: Colors.white,
           image:
               DecorationImage(image: AssetImage("assets/images/pattern.png"))),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        drawer: SideMenu(),
+        drawer: const SideMenu(),
         appBar: selectedCategory != null
             ? isSearch
                 ? AppBar(
-                    iconTheme: IconThemeData(color: Colors.white),
+                    iconTheme: const IconThemeData(color: Colors.white),
                     backgroundColor: Colors.green,
                     centerTitle: true,
-                    shape: OutlineInputBorder(
+                    shape: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.transparent),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(20),
@@ -55,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         controller: searchController,
                         decoration: InputDecoration(
                           hintText: "Search Article",
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                               color: Color.fromRGBO(57, 165, 82, 200),
                               fontSize: 14,
                               fontWeight: FontWeight.w400),
@@ -64,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               isSearch = false;
                               setState(() {});
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.close,
                               color: Color(0xff39A552),
                             ),
@@ -75,27 +73,27 @@ class _HomeScreenState extends State<HomeScreen> {
                               searchText=searchController.text;
                               setState(() {});
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.search,
                               color: Color(0xff39A552),
                             ),
                           ),
                           border:
-                              UnderlineInputBorder(borderSide: BorderSide.none),
+                              const UnderlineInputBorder(borderSide: BorderSide.none),
                         ),
                       ),
                     ),
                   )
                 : AppBar(
-                    iconTheme: IconThemeData(color: Colors.white),
+                    iconTheme: const IconThemeData(color: Colors.white),
                     backgroundColor: Colors.green,
                     centerTitle: true,
-                    shape: OutlineInputBorder(
+                    shape: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.transparent),
                         borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(20),
                             bottomRight: Radius.circular(20))),
-                    title: Text(
+                    title: const Text(
                       "News",
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold),
@@ -107,25 +105,25 @@ class _HomeScreenState extends State<HomeScreen> {
                           setState(() {});
                         },
                         child: Container(
-                          child: Icon(
+                          padding: const EdgeInsets.all(15),
+                          child:  const Icon(
                             Icons.search,
                             size: 25,
                           ),
-                          padding: EdgeInsets.all(15),
                         ),
                       )
                     ],
                   )
             : AppBar(
-                iconTheme: IconThemeData(color: Colors.white),
+                iconTheme: const IconThemeData(color: Colors.white),
                 backgroundColor: Colors.green,
                 centerTitle: true,
-                shape: OutlineInputBorder(
+                shape: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.transparent),
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(20),
                         bottomRight: Radius.circular(20))),
-                title: Text(
+                title: const Text(
                   "News",
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
@@ -136,7 +134,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ? CategoryTab(onClick: onCategoryClicked)
             : DataTab(
                 categoryId: selectedCategory!.id,
-                onSearch: performSearch,
                 searchText: searchText,
               ),
       ),
@@ -151,8 +148,5 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
 
-  void performSearch(String searchText) {
-    print("Search Term: $searchText");
-  }
 
 }
