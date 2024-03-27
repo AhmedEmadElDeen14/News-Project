@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
               alignment: Alignment.bottomCenter,
               margin: const EdgeInsets.all(18),
               child: const Text(
-                "supervised by Mohamed Nabil",
+                "Supervised by Mohamed Hamoda",
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
