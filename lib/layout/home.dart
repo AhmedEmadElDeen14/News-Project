@@ -18,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool isSearch = false;
   var searchController = TextEditingController();
+  String searchText="";
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         bottomRight: Radius.circular(20),
                       ),
                     ),
-                    leading: SizedBox(),
+                    automaticallyImplyLeading: false,
                     title: Container(
+                      width: MediaQuery.of(context).size.width*.85,
+                      alignment: Alignment.topCenter,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(25),
@@ -67,6 +70,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           suffixIcon: InkWell(
+                            onTap: () {
+                              isSearch = false;
+                              searchText=searchController.text;
+                              setState(() {});
+                            },
                             child: Icon(
                               Icons.search,
                               color: Color(0xff39A552),
@@ -123,10 +131,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
+
         body: selectedCategory == null
             ? CategoryTab(onClick: onCategoryClicked)
             : DataTab(
                 categoryId: selectedCategory!.id,
+                onSearch: performSearch,
+                searchText: searchText,
               ),
       ),
     );
@@ -139,13 +150,9 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {});
   }
 
-  late String searchText;
 
-  search(searchController){
-
-    searchText = searchController;
-
-
+  void performSearch(String searchText) {
+    print("Search Term: $searchText");
   }
 
 }
