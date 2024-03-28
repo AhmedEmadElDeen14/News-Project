@@ -26,5 +26,5 @@ This Flutter project is a News App that keeps users informed with the latest new
 - Users can scroll through the list of fetched news articles and tap on an article to read its full details.
 - Tapping on a news article seamlessly opens it in the user's default web browser for an enhanced reading experience.
 
-##Route Academy:
+## Route Academy:
 - This project was developed during the Flutter course at Route Academy, where the fundamentals of Flutter, Dart programming, and mobile app development were covered.
